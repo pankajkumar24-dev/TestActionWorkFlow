@@ -6,3 +6,15 @@ jobs:
     steps:
       - name: my-step
         run: echo "Hello World!"
+# Add email notification
+      - name: Send notification on success
+        if: success()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.runId,
+              body: "The workflow has completed successfully."
+            })
