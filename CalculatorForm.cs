@@ -2,6 +2,7 @@
 
 namespace C__MS_Calculator
 {
+    //test
     public partial class CalculatorForm : Form
     {
         private bool equalsPressed = false;
